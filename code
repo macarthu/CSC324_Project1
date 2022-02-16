@@ -1,0 +1,10 @@
+library(tidyverse)
+library(ggplot2)
+data1 <-read.csv("/Users/harrymacarthur/Desktop/CSC 324/SoilHealthDB/data/SoilHealthDB_V0.csv")
+data2 <-read.csv("/Users/harrymacarthur/Desktop/CSC 324/SoilHealthDB/data/SoilHealthDB_V1.csv")
+lonLat <- data2[ c(11, 12)]
+elev <- data2[ c("Elevation")]
+covcropgroup <- data2[ c("CoverCropGroup")]
+# plot(lonLat , pch=20 , cex=0.05 , col="#000045" , main="Coordinates of Research Sites")
+
+
