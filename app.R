@@ -185,7 +185,7 @@ selectLabel <- function(x) {
   }else if(x==6){
     return ("Year of measurement")
   }else if(x==7){
-    return ("Marked for Cut? (0 = Y, 1 = N)")
+    return ("Marked for Cut? (0 = N, 1 = Y)")
   }else if (x==8){
     return("Tree Number")
   }
