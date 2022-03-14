@@ -1,0 +1,40 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red25\green25\blue25;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c1\c1;\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c12970\c12970\c12937;
+}
+\margl1440\margr1440\vieww10800\viewh8240\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 Harold MacArthur\
+CSC324 Individual Project\
+Basic Documentation:\
+The purpose of this project was to analyze data obtained from the USDA Forest Service. I had hoped to get a better understanding of the area, rural Georgia, in terms of tree population and ages. Also, I had hoped to find trends and correlations within the data.\
+\
+The data itself is various stats about trees in 72 different plots in rural Georgia. This land, dubbed the Hitchiti Experimental Forest, is under Forest Service control. The dataset itself originally contained 30 variables and just over 26,000 observations.\
+\
+The data was collected by US Government employees, scientists, who made measurements from 1949 to 2002. Data was collected by the team about every 5 years between 1949 to 1983, and then was continued from 1993 to 2002.\
+\
+To be honest, the first user I had in mind for these visualizations was my roommate. Over quarantine, he worked for the Forest Service as a woodland firefighter in Oregon. While he did learn a lot, he admitted to not learning much, or in his words \'91enough\'92, about the trees. I thought that this would be an interesting way for individuals who are in the line of work to get a good understanding of natural growth trees in Forest Service land.\
+\
+The specific question I was trying to answer was what variables, if any, are related to the age of trees. I had noticed that a handful of trees in the data set were 141 years old, which struck me as ancient, and I wished to look deeper into it. By breaking the trees up by species, it was clear which species aged better.  \
+Loblolly pines, Flowering Dogwoods, Florida Maples, Black Gums, and Sweet Gums were the eldest trees in the Hitchiti Forest. Hardwoods Tended to be rather young, while all Oaks had average ages over 100. Unsurprisingly, the majority of the trees were Loblollys, as that is what the experiment was focused on. Excluding Loblollys, Hardwoods consisted of just over 50% of the remaining trees, with Shortleaf Pines making up the next 26%. Trees marked for cutting were significantly younger than unmarked trees, and most of them were 30-33 years old. Additionally, every single tree that was 140 years old was at the lowest elevations of the plots, as well as most of the older trees. I would consider those to be the most significant insights. \
+\
+As far as improvement goes, I think I would need to do more research into trees to get a better understanding of the data. I do not know much about crowns, azimuth, or soil. If I had a better understanding of these, I believe I could have created a more informative app. Furthermore, I think there are a few appearance upgrades that could be done, but alas.\
+\
+Sources:\
+Data was taken from this url: https://www.fs.usda.gov/rds/archive/catalog/RDS-2021-0105 \
+Citation:\
+\pard\pardeftab720\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Leduc, Daniel J.; Wenger, Karl F.; Cooper, Robert W.; Brender, Ernst V.; Jones, Earle. 2021. Hitchiti loblolly pine growing space study. Fort Collins, CO: Forest Service Research Data Archive. https://doi.org/10.2737/RDS-2021-0105\
+\
+\
+Process:\
+After going through multiple datasets, I had finally settled the Hitchiti Experimental Forest data set. I first began to break down the data into smaller categories, selecting specific or groups of variables to get smaller data sets. Secondly, I explored the metadata files to obtain the species master list, which I used to relate the Species column in the data set, originally a number, to their common name. I stored this data in a new column, dubbed speciesName. Beyond that, I read the rest of the metadata to get a better understanding of the process and the study that was done, as well as to better understanding the meaning and significance behind each column.\
+\
+Design Decisions:\
+I wanted to convey basic information in an exploratory way, as well as display trends within the data. To do this, I chose a histogram and a pie chart because they are user friendly and very readable. They both give information at a glance, and are good for understanding data as a whole. I chose a scatterplot in order to display trends and allow the user to manipulate data.\
+\
+}
