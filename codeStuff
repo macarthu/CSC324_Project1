@@ -1,2 +1,0 @@
-data <- IGBP[ , c(4:3)] //get lat and long
-plot(data , pch=20 , cex=0.1 , col="#49c8a2" , main="Coordinates of Research Sites") //plot world map
