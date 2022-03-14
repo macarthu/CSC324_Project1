@@ -1,7 +1,116 @@
 library(shiny)
 library(ggplot2)
 library(plotly)
+#managing data
+trees <- read.csv("/Users/harrymacarthur/Desktop/CSC 324/RDS-2021-0105/Data/hitchiti.csv")
+#organizing trees by plot
+plot0to25 <- filter(trees, plotnum <= 25)
+plot26to50 <- filter(trees, plotnum > 25, plotnum <= 50)
+plot51to72 <- filter(trees, plotnum > 50, plotnum <= 72)
+#organizing trees by cut
+unmarkedTrees <- filter(trees, Cut == 0)
+markedTrees <- filter(trees, Cut == 1)
+
+#list of all trees by species
+hardwoods <- filter(trees, Species == 4)
+eastern_red_cedar <- filter(trees, Species == 068)
+pines <- filter(trees, Species == 100)
+shortleaf_pine <- filter(trees, Species == 110)
+loblolly_pine <- filter(trees, Species == 131)
+maples <- filter(trees, Species == 310)
+florida_maple <- filter(trees, Species == 311)
+red_maple <- filter(trees, Species == 316)
+flowering_dogwood <- filter(trees, Species == 491)
+hawthorns <- filter(trees, Species == 500)
+sweetgum <- filter(trees, Species == 611)
+yellow_poplar <- filter(trees, Species == 621)
+black_gum <- filter(trees, Species == 694)
+eastern_hophornbeam <- filter(trees, Species == 701)
+black_cherry <- filter(trees, Species == 762)
+oaks <- filter(trees, Species == 800)
+white_oak <- filter(trees, Species == 802)
+southern_red_oak <- filter(trees, Species == 812)
+water_oak <- filter(trees, Species == 827)
+post_oak <- filter(trees, Species == 835)
+elms <- filter(trees, Species == 970)
+
+#creation of dataframe for piecharts for species
+piesSpecies <- data.frame(NAME = c("Hardwood Species", "Eastern Red Cedar", "Unknown Pine Species", "Shortleaf Pine", "Loblolly Pine", "Maple Species",
+                                   "Florida Maple", "Red Maple", "Flowering Dogwood", "Hawthorn Species", "Sweetgum", "Yellow Poplar", "Black Gum",  "Eastern Hophornbeam", "Black Cherry", 
+                                   "Oak Species", "White Oak", "Southern Red Oak", "Water Oak", "Post Oak", "Elm"),
+                          Amount = c(nrow(hardwoods), nrow(eastern_red_cedar), nrow(pines), nrow(shortleaf_pine), nrow(loblolly_pine), nrow(maples),
+                                     nrow(florida_maple), nrow(red_maple), nrow(flowering_dogwood), nrow(hawthorns), nrow(sweetgum), nrow(yellow_poplar), nrow(black_gum), nrow(eastern_hophornbeam), nrow(black_cherry),
+                                     nrow(oaks), nrow(white_oak), nrow(southern_red_oak), nrow(water_oak), nrow(post_oak), nrow(elms))) 
+#removing list behavior
+piesSpecies$NAME <- unlist(piesSpecies$NAME)
+piesSpecies$Amount <- unlist(piesSpecies$Amount)
+
+#creating pieSpecies with no loblollys
+pieSpeciesSansLoblolly <- filter(piesSpecies, NAME != "Loblolly Pine")
+
+#creation of dataframe for piecharts for cut marking
+piesCut <- data.frame(NAME = c("Marked for Cutting", "Unmarked"),
+                      Amount = c(nrow(markedTrees), nrow(unmarkedTrees)))
+#removing list behavior
+piesCut$NAME <- unlist(piesCut$NAME)
+piesCut$Amount <- unlist(piesCut$Amount)
+
 #functions!
+
+#data functions
+#function to categorize all tree species in data set
+#species number and name was taken from the metadata file for the data set
+nameSpecies <- function(x){
+  if(x == 4){
+    return("Hardwood Species")
+  }else if(x == 68){
+    return("Eastern Red Cedar")
+  }else if(x == 100){
+    return("Unknown Pine Species")
+  }else if(x == 110){
+    return("Shortleaf Pine")
+  }else if(x == 131){
+    return("Loblolly Pine")
+  }else if(x == 310){
+    return("Maple Species")
+  }else if(x == 311){
+    return("Florida Maple")
+  }else if(x == 316){
+    return("Red Maple")
+  }else if(x == 491){
+    return("Flowering Dogwood")
+  }else if(x == 500){
+    return("Hawthorn Species")
+  }else if(x == 611){
+    return("Sweetgum")
+  }else if(x == 621){
+    return("Yellow Poplar")
+  }else if(x == 694){
+    return("Black Gum")
+  }else if(x == 701){
+    return("Eastern Hophornbeam")
+  }else if(x == 762){
+    return("Black Cherry")
+  }else if(x == 800){
+    return("Oak Species")
+  }else if(x == 802){
+    return("White Oak")
+  }else if(x == 812){
+    return("Southern Red Oak")
+  }else if(x == 827){
+    return("Water Oak")
+  }else if(x == 835){
+    return("Post Oak")
+  }else if(x == 970){
+    return("Elm")
+  }else{
+    return("Unknown")
+  }
+}
+trees$speciesName <- ""
+for(i in 1:(nrow(trees))){
+  trees$speciesName[i] <- nameSpecies(trees$Species[i])
+}
 
 #Histogram functions:
 #function for choosing data based on user-input
